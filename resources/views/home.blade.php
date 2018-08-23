@@ -2,6 +2,28 @@
 
 @section('content')
 <div class="container">
+
+    <div class="row">
+        {{ Form::open(array('route' => 'index', 'method' => 'GET')) }}
+
+        {{ Form::label('find', 'Search') }}
+        {{ Form::text('find') }}
+
+        {{ Form::label('type', 'Type') }}
+        <p>
+            By author
+            {{ Form::radio('type', 'author') }}
+        </p>
+        <p>
+            By book name
+            {{ Form::radio('type', 'book') }}
+        </p>
+
+        {{ Form::submit('Find') }}
+
+        {{ Form::close() }}
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

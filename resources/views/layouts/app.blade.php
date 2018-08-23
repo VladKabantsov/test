@@ -31,6 +31,18 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                <button>
+                    <a href=" {{ route('books.index') }}">
+                        Books
+                    </a>
+                </button>
+
+                <button>
+                    <a href=" {{ route('authors.index') }}">
+                        Authors
+                    </a>
+                </button>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">

@@ -13,7 +13,6 @@ class HomePageController extends Controller
      */
     public function index(Request $request)
     {
-
         $books = [];
 
         if ($request->has('find') && $request->get('find') && $request->has('type')) {

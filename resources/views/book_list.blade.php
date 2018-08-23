@@ -6,7 +6,7 @@
 
             <div class="col-md-12">
                 <h4>Books</h4>
-                <button class="btn btn-primary btn-xs" data-title="Add book" >
+                <button>
                     <a href="{{ route('books.create') }}" >
                         Add Book
                     </a>

@@ -15,7 +15,7 @@
 
             <div class="col-md-12">
                 <h4>Authors</h4>
-                <button class="btn btn-primary btn-xs" data-title="Add book" >
+                <button>
                     <a href="{{ route('authors.create') }}" >
                         Add Author
                     </a>
