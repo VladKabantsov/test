@@ -26,12 +26,12 @@
                             <tbody>
                                 @foreach ($books as $book)
                                     <tr>
-                                        <td>{{$book->name}}</td>
-                                        <td>{{$book->description}}</td>
-                                        <td>{{$book->page_count}}</td>
+                                        <td>{{$book[ 'name' ]}}</td>
+                                        <td>{{$book[ 'description' ]}}</td>
+                                        <td>{{$book[ 'page_count' ]}}</td>
                                         <td>
-                                            @foreach ($book->authors as $author)
-                                                {{$author->first_name}} {{$author->last_name}}
+                                            @foreach ($book[ 'authors' ] as $author)
+                                                {{$author[ 'first_name' ]}} {{$author[ 'last_name' ]}}
                                                 <br>
                                             @endforeach
                                         </td>
