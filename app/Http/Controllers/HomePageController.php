@@ -15,32 +15,38 @@ class HomePageController extends Controller
     {
         $books = [];
 
-        if ($request->has('find') && $request->get('find') && $request->has('type')) {
+        if ($request->has('find') && $request->get('find')) {
 
-            $param = $request->get('find');
+            if ($request->has('type')) {
 
-            if ($request->get('type') === 'book') {
+                $param = $request->get('find');
 
-                $books = Book::where('name', 'LIKE', "%{$param}%")
-                             ->where('is_available', true)
-                             ->get()
-                             ->load('authors');
-            } else if ($request->get('type') === 'author') {
+                if ($request->get('type') === 'book') {
 
-                $authors = Author::where('first_name', 'LIKE', "%{$param}%")->get();
+                    $books = Book::where('name', 'LIKE', "%{$param}%")
+                                 ->where('is_available', true)
+                                 ->get()
+                                 ->load('authors');
+                } elseif ($request->get('type') === 'author') {
 
-                foreach ($authors as $author) {
+                    $authors = Author::where('first_name', 'LIKE', "%{$param}%")->get();
 
-                    $authorBooks = $author->books()->where('is_available', true)->get()->load('authors')->toArray();
+                    foreach ($authors as $author) {
 
-                    foreach ($authorBooks as $authorBook) {
+                        $authorBooks = $author->books()->where('is_available', true)->get()->load('authors')->toArray();
 
-                        if (!in_array($authorBook, $books)) {
+                        foreach ($authorBooks as $authorBook) {
 
-                            $books[] = $authorBook;
+                            if (!in_array($authorBook, $books)) {
+
+                                $books[] = $authorBook;
+                            }
                         }
                     }
                 }
+            } else {
+
+                return view('home', ['books' => $books]);
             }
         } else {
 

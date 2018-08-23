@@ -37,6 +37,7 @@
                     @endif
 
                         <table class="table">
+                            @if (!empty($books))
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -46,20 +47,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($books as $book)
-                                    <tr>
-                                        <td>{{$book[ 'name' ]}}</td>
-                                        <td>{{$book[ 'description' ]}}</td>
-                                        <td>{{$book[ 'page_count' ]}}</td>
-                                        <td>
-                                            @foreach ($book[ 'authors' ] as $author)
-                                                {{$author[ 'first_name' ]}} {{$author[ 'last_name' ]}}
-                                                <br>
-                                            @endforeach
-                                        </td>
-                                    </tr>
-                                @endforeach
+
+                                    @foreach ($books as $book)
+                                        <tr>
+                                            <td>{{$book[ 'name' ]}}</td>
+                                            <td>{{$book[ 'description' ]}}</td>
+                                            <td>{{$book[ 'page_count' ]}}</td>
+                                            <td>
+                                                @foreach ($book[ 'authors' ] as $author)
+                                                    {{$author[ 'first_name' ]}} {{$author[ 'last_name' ]}}
+                                                    <br>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+
                             </tbody>
+                            @else
+                                <h4>
+                                    Our library is not contain this books
+                                </h4>
+                            @endif
                         </table>
                 </div>
             </div>
